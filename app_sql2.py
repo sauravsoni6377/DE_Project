@@ -4,11 +4,14 @@ from sqlalchemy import create_engine
 from io import BytesIO
 import plotly.express as px
 import plotly.graph_objects as go
+import tensorflow as tf
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 
 # MySQL connection
 db_config = {
     'user': 'root',
-    'password': '',
+    'password': 'sanj6132',
     'host': 'localhost',
     'port': 3306,
     'database': 'tourism_db'
@@ -18,6 +21,30 @@ engine = create_engine(f"mysql+pymysql://{db_config['user']}:{db_config['passwor
 # Query data from MySQL
 query = "SELECT * FROM tourism_data"
 data = pd.read_sql(query, con=engine)
+
+def load_ml_models():
+    # Define scalers
+    scaler_X = MinMaxScaler()
+    scaler_y_domestic = MinMaxScaler()
+    scaler_y_foreign = MinMaxScaler()
+    
+    # Load pretrained models
+    model_domestic = tf.keras.models.load_model("/Users/sanjay/data_engg/weights/domestic_visitor_weights.h5")
+    model_foreign = tf.keras.models.load_model("/Users/sanjay/data_engg/weights/foreign_visitor_weights.h5")
+    
+    return model_domestic, model_foreign, scaler_X, scaler_y_domestic, scaler_y_foreign
+
+model_domestic, model_foreign, scaler_X, scaler_y_domestic, scaler_y_foreign = load_ml_models()
+
+# Streamlit Dashboard Setup
+st.set_page_config(page_title="India Tourism Dashboard", layout="wide")
+st.title("India Tourism Dashboard 🇮🇳")
+
+# Sidebar Navigation
+st.sidebar.title("Navigation")
+pages = st.sidebar.radio("Go to", ["Home", "Search & Filter", "Insights & Comparisons", "Custom Analysis", "ML Predictions", "Export Data"])
+
+
 
 # Streamlit app
 st.set_page_config(page_title="India Tourism Dashboard", layout="wide")
@@ -98,6 +125,39 @@ elif pages == "Custom Analysis":
     corr = data.corr(numeric_only=True)
     fig = px.imshow(corr, text_auto=True, title="Correlation Matrix")
     st.plotly_chart(fig, use_container_width=True)
+
+
+
+elif pages == "ML Predictions":
+    st.header("Machine Learning Predictions")
+    
+    st.subheader("Input Features")
+    # Inputs for model prediction
+    num_features = st.slider("Number of Features", 2, 10, 5)
+    feature_values = np.array([
+        st.number_input(f"Feature {i+1}", min_value=0.0, max_value=1.0, value=0.5) 
+        for i in range(num_features)
+    ]).reshape(1, -1)
+    
+    # Scale input features
+    scaled_features = scaler_X.transform(feature_values)
+    
+    # Predictions
+    domestic_pred_scaled = model_domestic.predict(scaled_features)
+    foreign_pred_scaled = model_foreign.predict(scaled_features)
+    
+    # Reverse scale predictions
+    domestic_pred = scaler_y_domestic.inverse_transform(domestic_pred_scaled)
+    foreign_pred = scaler_y_foreign.inverse_transform(foreign_pred_scaled)
+    
+    st.subheader("Predictions")
+    st.write(f"Predicted Domestic Visitors (2020-21): {domestic_pred[0, 0]:,.0f}")
+    st.write(f"Predicted Foreign Visitors (2020-21): {foreign_pred[0, 0]:,.0f}")
+
+    st.markdown("---")
+    st.subheader("Model Evaluation")
+    st.write("Visualizations for model evaluation can be added here.")
+
 
 elif pages == "Export Data":
     st.header("Export Data")

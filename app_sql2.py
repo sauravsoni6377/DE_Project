@@ -11,7 +11,7 @@ import numpy as np
 # MySQL connection
 db_config = {
     'user': 'root',
-    'password': 'sanj6132',
+    'password': '',
     'host': 'localhost',
     'port': 3306,
     'database': 'tourism_db'

@@ -1,7 +1,7 @@
-#IndiaTour Insights: Predicting and Analyzing Tourist Behavior in India
-Welcome to the IndiaTour Insights repository! This project aims to analyze and predict tourist behavior in India by leveraging machine learning models and interactive web technologies. It provides valuable insights into tourism trends, including domestic and foreign visitors, monument popularity, and foreign exchange earnings. The platform integrates robust technologies for data analysis, prediction, and visualization.
+# IndiaTour Insights: Predicting and Analyzing Tourist Behavior in India
+Welcome to the IndiaTour Insights repository! This project aims to analyze and predict tourist behavior in India by leveraging machine learning models and interactive web technologies. It provides valuable insights into tourism trends, including domestic and foreign visitors, monument popularity, and foreign exchange earnings. The platform integrates robust technologies for data analysis, prediction, and visualization.</b>
 
-Table of Contents
+## Table of Contents
 Introduction
 Features
 Technologies Used

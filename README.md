@@ -90,6 +90,6 @@ IndiaTour Insights provides a robust platform for analyzing and predicting touri
 
 ## Contributors:
 
-Saurav Soni (B22AI035)</b>
-Dhruva Kumar Kaushal (B22AI017)</b>
+Saurav Soni (B22AI035)< br / >
+Dhruva Kumar Kaushal (B22AI017)< br / >
 Feel free to contribute or raise issues in the repository! 🚀

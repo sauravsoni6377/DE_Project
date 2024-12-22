@@ -41,9 +41,7 @@ data = pd.read_sql(query, con=engine)
 # st.set_page_config(page_title="India Tourism Dashboard", layout="wide")
 # st.title("India Tourism Dashboard 🇮🇳")
 
-# # Sidebar Navigation
-# st.sidebar.title("Navigation")
-# pages = st.sidebar.radio("Go to", ["Home", "Search & Filter", "Insights & Comparisons", "Custom Analysis", "ML Predictions", "Export Data"])
+
 
 
 

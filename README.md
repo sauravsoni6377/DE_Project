@@ -17,9 +17,9 @@ Insights into the impact of events (e.g., pandemics) on tourism.
 Visualizations for data-driven decision-making.
 
 ## Features
-Data Integration and Storage</b>
+- Data Integration and Storage</b>
 
-Unified MySQL database storing tourism-related data (visitor counts, monuments, earnings).
+- Unified MySQL database storing tourism-related data (visitor counts, monuments, earnings).
 Scalable structure for real-time updates.</b>
 Machine Learning Predictions</b>
 

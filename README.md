@@ -20,16 +20,14 @@ Visualizations for data-driven decision-making.
 - Data Integration and Storage</b>
 
 - Unified MySQL database storing tourism-related data (visitor counts, monuments, earnings).
-Scalable structure for real-time updates.</b>
-Machine Learning Predictions</b>
+- Scalable structure for real-time updates.</b>
+- Machine Learning Predictions</b>
 
-Linear Regression and Decision Trees for forecasting trends.
-Predictions for both domestic and foreign visitors with high accuracy.</b>
-Interactive Web Interface</b>
-
-Built using Streamlit for seamless visualization and analysis.
-Features include filtering, comparisons, and trend analysis.</b>
-Data Export and Customization</b>
+- Linear Regression and Decision Trees for forecasting trends.
+- Predictions for both domestic and foreign visitors with high accuracy.</b>
+- Interactive Web Interface</b> Built using Streamlit for seamless visualization and analysis.
+- Features include filtering, comparisons, and trend analysis.</b>
+- Data Export and Customization</b>
 
 Export filtered datasets in CSV format.
 Advanced analysis tools like correlation heatmaps and scatter plots.</b>
